@@ -6,8 +6,58 @@
 /*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:58:08 by abello-r          #+#    #+#             */
-/*   Updated: 2021/06/10 15:14:51 by abello-r         ###   ########.fr       */
+/*   Updated: 2021/06/16 17:16:58 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "talk.h"
+
+static int	send_bin(pid_t pid, char c)
+{
+	int	bit;
+
+	bit = 7;
+	while (--bit > -1)
+	{
+		if (c & (1 << bit))
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		usleep(60);
+	}
+	return (0);
+}
+
+static int		ftp_server(pid_t pid_num, char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] >= 32 && str[i] <= 126)
+	{
+		if (send_bin(pid_num, str[i]))
+			return (1);
+		++i;
+	}
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	int	pid_num;
+
+	if (argc < 3)
+	{
+		write(2, "Introduce un PID y una cadena\n", 31);
+		return (1);
+	}
+	else if (argc == 3)
+	{
+		pid_num = ft_atoi(argv[1]);
+		if (pid_num == 0)
+			return (1);
+		if (pid_num)
+			ftp_server(pid_num, argv[2]);
+	}
+	return (0);
+}
