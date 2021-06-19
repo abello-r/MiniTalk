@@ -1,6 +1,6 @@
 NAME= talk.a
 
-SRCS= server.c
+SRCS= server.c client.c
 
 OBJ= $(SRCS:.c=.o)
 
@@ -10,8 +10,8 @@ $(NAME): $(OBJ)
 	@cp ./srcs/Libft/libft.a .
 	@ar -rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	gcc -Wall -Werror -Wextra  -fsanitize=address libft.a server.c -o server
-	gcc -Wall -Werror -Wextra  -fsanitize=address libft.a client.c -o client
+	gcc -Wall -Werror -Wextra -fsanitize=address libft.a server.c -o server
+	gcc -Wall -Werror -Wextra -fsanitize=address libft.a client.c -o client
 	@clear
 
 all: $(NAME)
@@ -27,4 +27,4 @@ clean:
 fclean: clean
 		@rm -rf libft.a talk.a
 
-.PHONY: all clean re
+.PHONY: all clean re fclean
