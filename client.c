@@ -6,7 +6,7 @@
 /*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:58:08 by abello-r          #+#    #+#             */
-/*   Updated: 2021/06/19 17:20:46 by abello-r         ###   ########.fr       */
+/*   Updated: 2021/06/20 18:01:26 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 3)
 	{
-		write(2, "Introduce un PID y una cadena\n", 31);
+		write(STDOUT_FILENO, "Introduce un PID y una cadena\n", 31);
 		return (1);
 	}
 	else if (argc == 3)
