@@ -6,7 +6,7 @@
 /*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:58:11 by abello-r          #+#    #+#             */
-/*   Updated: 2021/06/19 22:06:24 by abello-r         ###   ########.fr       */
+/*   Updated: 2021/06/24 18:34:03 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	reception(int sig)
 {
 	static size_t	i;
 	static int		bit;
-	static char		buf[1000];
+	static char		buf[1002];
 
 	if (--bit == -1)
 	{
@@ -44,11 +44,11 @@ static void	reception(int sig)
 		buf[i] |= (1 << bit);
 	else if (sig == SIGUSR2)
 		buf[i] &= ~(1 << bit);
-	if (i == 999 || buf[i] == 127)
+	if (i == 1001 || buf[i] == 127)
 	{
 		buf[i] = 0;
 		write(STDOUT_FILENO, buf, i + 1);
-		ft_memset(buf, '\0', 999);
+		ft_memset(buf, '\0', 1001);
 		i = 0;
 		bit = 0;
 	}
