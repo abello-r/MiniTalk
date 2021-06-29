@@ -6,7 +6,7 @@
 /*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 14:51:42 by abello-r          #+#    #+#             */
-/*   Updated: 2021/05/27 20:35:23 by abello-r         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:39:03 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <stddef.h>
 # include <string.h>
 # include <unistd.h>
+
+# define GREEN "\033[1;32m"
+# define RED "\033[1;31m"
 
 typedef struct s_list
 {
