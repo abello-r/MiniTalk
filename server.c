@@ -6,7 +6,7 @@
 /*   By: abello-r <abello-r@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 14:58:11 by abello-r          #+#    #+#             */
-/*   Updated: 2021/06/24 18:34:03 by abello-r         ###   ########.fr       */
+/*   Updated: 2021/06/29 14:04:25 by abello-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	reception(int sig)
 
 static void	close_server(int sig)
 {
-	write(STDOUT_FILENO, "\nServidor apagado.\n", 19);
+	write(STDOUT_FILENO, GREEN "\nServidor apagado.\n", 26);
 	sig = 2;
 	g_foo = 0;
 }
